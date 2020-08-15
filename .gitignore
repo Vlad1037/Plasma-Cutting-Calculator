@@ -1,16 +1,12 @@
-# Файли і папки операційної системи
 .DS_Store
 Thumbs.db
 
-# Файли редактора
 .idea
 *.sublime*
 .vscode
 
-# Допоміжні файли
 *.log*
 node_modules
 package-lock.json
 
-# Файли збірки
 dist

@@ -1,3 +1,6 @@
-import './styles/style.css';
+import 'bootswatch/dist/litera/bootstrap.min.css';
+import {plasmaCuttingCalc} from './js/calculator';
 
-console.log('Working');
+window.addEventListener('DOMContentLoaded', () => {
+  plasmaCuttingCalc(document.getElementById('plasmaCuttingCalc'));
+});

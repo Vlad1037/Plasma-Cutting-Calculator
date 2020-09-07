@@ -11,7 +11,7 @@ export function isValid(form, control) {
   });
 }
 
-export function conrtolsValidation(form, controls) {
+export function controlsValidation(form, controls) {
   Object.keys(controls).forEach((control) => {
     controls[control].forEach((fn) => {
       form[control].addEventListener('input', () => {

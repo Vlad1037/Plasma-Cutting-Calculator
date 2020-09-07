@@ -1,4 +1,4 @@
-import {isValid, inputsValidation, conrtolsValidation} from './validations';
+import {isValid, inputsValidation, controlsValidation} from './validations';
 
 export function plasmaCuttingCalc(form) {
   const controls = {
@@ -9,7 +9,7 @@ export function plasmaCuttingCalc(form) {
   };
 
   calcPrice(form, controls);
-  conrtolsValidation(form, controls);
+  controlsValidation(form, controls);
 }
 
 function calcPrice(form, controls) {

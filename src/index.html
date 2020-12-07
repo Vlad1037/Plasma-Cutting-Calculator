@@ -1,75 +1,181 @@
 <!DOCTYPE html>
 <html lang="ru">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-  <title>Plasma Cutting Calculator</title>
-</head>
-<body>
-  <div class="container mt-5">
-    <div class="mb-5">
-      <h3 class="text-center">
-        Расчет стоимости плазменной резки металла
-      </h3>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <title>Plasma Cutting Calculator</title>
+  </head>
+  <body>
+    <div class="container mt-5">
+      <div class="mb-5">
+        <h3 class="text-center">Расчет стоимости плазменной резки металла</h3>
+      </div>
+      <form class="text-center" id="plasmaCuttingCalc">
+        <div class="form-group row">
+          <label for="typeOfMetal" class="col-sm-6 col-form-label">
+            Тип металла
+          </label>
+          <div class="col-sm-6">
+            <select id="typeOfMetal" name="typeOfMetal" class="form-control">
+              <option value="1">Углеродистая сталь</option>
+              <option value="2">Нержавеющая сталь</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="thickness" class="col-sm-6 col-form-label"
+            >Толщина металла:</label
+          >
+          <div class="col-sm-6">
+            <select id="thickness" name="thickness" class="form-control">
+              <option value="0">до 2 мм</option>
+              <option value="1">3-4 мм</option>
+              <option value="2">5-6 мм</option>
+              <option value="3">7-8 мм</option>
+              <option value="4">9-10 мм</option>
+              <option value="5">11-14 мм</option>
+              <option value="6">15-19 мм</option>
+              <option value="7">20-24 мм</option>
+              <option value="8">25-30 мм</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="cuttingLength" class="col-sm-6 col-form-label"
+            >Длина резки, м:</label
+          >
+          <div class="col-sm-6">
+            <input
+              type="text"
+              name="cuttingLength"
+              class="form-control"
+              id="cuttingLength"
+            />
+            <div class="invalid-feedback">Введите корректное значение.</div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="numberOfPieces" class="col-sm-6 col-form-label"
+            >Кол-во прожогов, шт:</label
+          >
+          <div class="col-sm-6">
+            <input
+              type="text"
+              name="numberOfPieces"
+              class="form-control"
+              id="numberOfPieces"
+            />
+            <div class="invalid-feedback">Введите корректное значение</div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="costOfCutting" class="col-sm-6 col-form-label"
+            >Стоимость резки</label
+          >
+          <div class="col-sm-6">
+            <span class="form-control text-center" id="costOfCutting"></span>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-sm-6">
+            <button type="reset" id="reset" class="btn btn-danger">
+              Cкинуть
+            </button>
+          </div>
+          <div class="col-sm-6">
+            <button type="submit" class="btn btn-primary">Рассчитать</button>
+          </div>
+        </div>
+      </form>
+      <div class="mb-5">
+        <h3 class="text-center">Калькулятор массы металла</h3>
+      </div>
+      <form class="text-center" id="metalCalculator">
+        <div class="form-group row">
+          <label for="metalThickness" class="col-sm-6 col-form-label"
+            >Толщина, мм:</label
+          >
+          <div class="col-sm-6">
+            <input
+              type="text"
+              name="metalThickness"
+              class="form-control"
+              id="metalThickness"
+            />
+            <div class="invalid-feedback">Введите корректное значение</div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="metalLength" class="col-sm-6 col-form-label"
+            >Длина, мм:</label
+          >
+          <div class="col-sm-6">
+            <input
+              type="text"
+              name="metalLength"
+              class="form-control"
+              id="metalLength"
+            />
+            <div class="invalid-feedback">Введите корректное значение</div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="metalWidth" class="col-sm-6 col-form-label"
+            >Ширина, мм:</label
+          >
+          <div class="col-sm-6">
+            <input
+              type="text"
+              name="metalWidth"
+              class="form-control"
+              id="metalWidth"
+            />
+            <div class="invalid-feedback">Введите корректное значение</div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="metalWeight" class="col-sm-6 col-form-label"
+            >Вес, кг:</label
+          >
+          <div class="col-sm-6">
+            <span class="form-control text-center" id="metalWeight"></span>
+            <div class="invalid-feedback">Введите корректное значение</div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="priceOfMetal" class="col-sm-6 col-form-label"
+            >Цена металла, грн/кг:</label
+          >
+          <div class="col-sm-6">
+            <input
+              type="text"
+              name="priceOfMetal"
+              class="form-control"
+              id="priceOfMetal"
+            />
+            <div class="invalid-feedback">Введите корректное значение</div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="costOfMetal" class="col-sm-6 col-form-label"
+            >Стоимость металла</label
+          >
+          <div class="col-sm-6">
+            <span class="form-control text-center" id="costOfMetal"></span>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-sm-6">
+            <button type="reset" id="reset" class="btn btn-danger mb-3">
+              Cкинуть
+            </button>
+          </div>
+          <div class="col-sm-6">
+            <button type="submit" class="btn btn-primary">Рассчитать</button>
+          </div>
+        </div>
+      </form>
     </div>
-    <form class="text-center" id="plasmaCuttingCalc">
-      <div class="form-group row">
-        <label for="typeOfMetal" class="col-sm-6 col-form-label">
-          Тип металла
-        </label>
-        <div class="col-sm-6">
-          <select id="typeOfMetal" name="typeOfMetal" class="form-control">
-            <option value="1">Углеродистая сталь</option>
-            <option value="2">Нержавеющая сталь</option>
-          </select>
-        </div>
-      </div>
-      <div class="form-group row">
-        <label for="thickness" class="col-sm-6 col-form-label">Толщина металла:</label>
-        <div class="col-sm-6">
-          <select id="thickness" name="thickness" class="form-control">
-            <option value="0">до 2 мм</option>
-            <option value="1">3-4 мм</option>
-            <option value="2">5-6 мм</option>
-            <option value="3">7-8 мм</option>
-            <option value="4">9-10 мм</option>
-            <option value="5">11-14 мм</option>
-            <option value="6">15-19 мм</option>
-            <option value="7">20-24 мм</option>
-            <option value="8">25-30 мм</option>
-          </select>
-        </div>
-      </div>
-      <div class="form-group row">
-        <label for="cuttingLength" class="col-sm-6 col-form-label">Длина резки, м:</label>
-        <div class="col-sm-6">
-          <input type="text" name="cuttingLength" class="form-control" id="cuttingLength"/>
-          <div class="invalid-feedback">Введите корректное значение.</div>
-        </div>
-      </div>
-      <div class="form-group row">
-        <label for="numberOfPieces" class="col-sm-6 col-form-label">Кол-во прожогов, шт:</label>
-        <div class="col-sm-6">
-          <input type="text" name="numberOfPieces" class="form-control" id="numberOfPieces"/>
-          <div class="invalid-feedback">Введите корректное значение.</div>
-        </div>
-      </div>
-      <div class="form-group row">
-        <label for="costOfCutting" class="col-sm-6 col-form-label">Стоимость резки, грн*</label>
-        <div class="col-sm-6">
-          <span class="form-control text-center" id="costOfCutting"></span>
-        </div>
-      </div>
-      <div class="form-group row">
-        <div class="col-sm-6">
-          <button type="reset" id="reset" class="btn btn-danger">Cкинуть</button>
-        </div>
-        <div class="col-sm-6">
-          <button type="submit" class="btn btn-primary">Рассчитать</button>
-        </div>
-      </div>
-    </form>
-  </div>
-</body>
+  </body>
 </html>

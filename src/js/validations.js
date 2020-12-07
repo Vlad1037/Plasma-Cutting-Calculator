@@ -1,4 +1,4 @@
-export function isValid(form, control) {
+export function isValid(form, control, textFields) {
   if (!form[control].value) {
     form[control].classList.add('is-invalid');
   } else {
@@ -7,15 +7,17 @@ export function isValid(form, control) {
 
   form.querySelector('#reset').addEventListener('click', () => {
     form[control].classList.remove('is-invalid');
-    form.querySelector('#costOfCutting').textContent = 0;
+    textFields.forEach((field) => {
+      form.querySelector(field).textContent = 0;
+    });
   });
 }
 
-export function controlsValidation(form, controls) {
+export function controlsValidation(form, controls, textFields) {
   Object.keys(controls).forEach((control) => {
     controls[control].forEach((fn) => {
       form[control].addEventListener('input', () => {
-        fn(form, control);
+        fn(form, control, textFields);
       });
     });
   });
